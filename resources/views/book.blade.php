@@ -26,6 +26,7 @@
                 <th>No.</th>
                 <th>Book Code</th>
                 <th>Title</th>
+                <th>Category</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -36,11 +37,16 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->book_code }}</td>
                 <td>{{ $item->title}}</td>
+                <td>
+                @foreach ($item->categories as $category)
+                    {{ $category->name }}
+                @endforeach    
+                </td>
                 <td>{{ $item->status }}</td>
                 <td>
                     <a href="#" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                    <a href="#" class="btn btn-sm btn-outline-success"><i class="fa fa-edit" aria-hidden="true"></i></a> 
-                    <a href="#" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a href="/book-edit/{{$item->slug}}" class="btn btn-sm btn-outline-success"><i class="fa fa-edit" aria-hidden="true"></i></a> 
+                    <a href="/book-delete/{{ $item->slug }}" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
             </tr>
             @endforeach
