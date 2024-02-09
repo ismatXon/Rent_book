@@ -14,7 +14,7 @@ class DashboardController extends Controller
         $bookCount = Book::count();
         $categoryCount = Category::count();
         $userCount = User::count();
-
+        
         return view('dashboard',[
             'book_count' => $bookCount,
             'category_count' => $categoryCount,

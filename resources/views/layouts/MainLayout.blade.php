@@ -30,18 +30,27 @@
             <div class="row g-0 h-100">
                 <div class="sidebar col-lg-2 collapse d-lg-block " id="navbarSupportedContent">
 
-                    @if (Auth::user()->role_id == 1)
-                        <a href="/dashboard" @if (request()->route()->uri == 'dashboard') class='active' @endif> Dashboard</a>
-                        <a href="/books" @if (request()->route()->uri == 'books' || request()->route()->uri == 'book-add' || request()->route()->uri == 'book-edit/{slug}' ) class='active' @endif>Books</a>
-                        <a href="/categories" @if (request()->route()->uri == 'categories') class='active' @endif>Categories</a>
-                        <a href="/users" @if (request()->route()->uri == 'users') class='active' @endif>Users</a>
-                        <a href="/rent-logs" @if (request()->route()->uri == 'rent-logs') class='active' @endif>Rent Logs</a>
-                        <a href="/logout">Logout</a>
+                    @if (Auth::user())
+                        @if (Auth::user()->role_id == 1)
+                            <a href="/dashboard" @if (request()->route()->uri == 'dashboard') class='active' @endif> Dashboard</a>
+                            <a href="/books" @if (request()->route()->uri == 'books' ||
+                                    request()->route()->uri == 'book-add' ||
+                                    request()->route()->uri == 'book-edit/{slug}') class='active' @endif>Books</a>
+                            <a href="/categories" @if (request()->route()->uri == 'categories') class='active' @endif>Categories</a>
+                            <a href="/users" @if (request()->route()->uri == 'users') class='active' @endif>Users</a>
+                            <a href="/rent-logs" @if (request()->route()->uri == 'rent-logs') class='active' @endif>Rent Logs</a>
+                            <a href="/"  @if (request()->route()->uri == '/') class='active' @endif >Book List</a>
+                            <a href="book-rent"  @if (request()->route()->uri == 'book-rent') class='active' @endif >Book Rent</a>
+                            <a href="/book-return"  @if (request()->route()->uri == 'book-return') class='active' @endif >Return Book</a>
+                            <a href="/logout" @if (request()->route()->uri == 'logout') class='active' @endif>Logout</a>
+                        @else
+                            <a href="/profile" @if (request()->route()->uri == 'profile') class='active' @endif>Profile</a>
+                            <a href="/" @if (request()->route()->uri == '/') class='active' @endif >Book List</a>
+                            <a href="/logout">Logout</a>
+                        @endif
                     @else
-                        <a href="/profile" @if (request()->route()->uri == 'profile') class='active' @endif>Profile</a>
-                        <a href="/logout">Logout</a>
+                        <a href="/login">Login</a>
                     @endif
-
 
                 </div>
                 <div class="content p-5 col-lg-10 ">
@@ -55,7 +64,7 @@
 
 
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
- 
+
 </body>
 
 </html>

@@ -7,6 +7,7 @@
     <title>Rent Books | Login </title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     
+    
 </head>
 <style>
     .main{

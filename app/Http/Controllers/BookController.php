@@ -66,7 +66,14 @@ class BookController extends Controller
     }
 
     public function delete($slug){
-        return view('book-delete');
+        $book = Book::where('slug',$slug)->first();
+        return view('book-delete',['book'=> $book]);
+    }
+
+    public function destroy($slug){
+        $book = Book::where('slug',$slug)->first();
+        $book->delete();
+        return redirect('books')->with('status',' Book Deleted Successfully!');
     }
 
     
